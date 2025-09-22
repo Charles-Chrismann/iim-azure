@@ -1,4 +1,4 @@
-// bayroumeter - vanilla JS app with a fake API over localStorage
+// bayroumeter - vanilla JS app with a API over localStorage
 
 (function(){
   const LATENCY_MIN = 350;  // ms
@@ -10,7 +10,7 @@
     session: 'bm_session',  // { username: string, token: string, ts: number }
   };
 
-  // --- Fake API (uses localStorage with small timeouts) ---
+  // --- API (uses localStorage with small timeouts) ---
   const api = {
     async register(username, password){
       return delay(() => {
