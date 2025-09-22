@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bayroumeter</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>hw 1</h1>
+  <header class="header">
+    <h1 class="title">bayroumeter</h1>
+    <div class="user-area" id="user-area">
+      <span id="user-label" class="user-label"></span>
+      <button id="logout-btn" class="btn btn-secondary btn-small" hidden>Logout</button>
+    </div>
+  </header>
+
+  <main class="container" id="app">
+    <!-- Auth View -->
+    <section id="auth-view" class="card" aria-live="polite">
+      <div class="tabs">
+        <button id="tab-login" class="tab active" aria-selected="true">Login</button>
+        <button id="tab-register" class="tab" aria-selected="false">Register</button>
+      </div>
+      <div class="tab-panels">
+        <form id="login-form" class="form" autocomplete="on">
+          <div class="form-row">
+            <label for="login-username">Username</label>
+            <input id="login-username" name="username" required />
+          </div>
+          <div class="form-row">
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" required />
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Login</button>
+          </div>
+          <p class="hint">No account? Click Register above.</p>
+          <p id="login-error" class="error" role="alert"></p>
+        </form>
+
+        <form id="register-form" class="form hidden" autocomplete="on">
+          <div class="form-row">
+            <label for="register-username">Username</label>
+            <input id="register-username" name="username" required />
+          </div>
+          <div class="form-row">
+            <label for="register-password">Password</label>
+            <input id="register-password" name="password" type="password" required />
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Create account</button>
+          </div>
+          <p class="hint">Already have one? Click Login above.</p>
+          <p id="register-error" class="error" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Vote View -->
+    <section id="vote-view" class="card hidden" aria-live="polite">
+      <h2>Do you like François Bayrou?</h2>
+      <div id="current-vote" class="current-vote" hidden></div>
+      <div class="vote-actions">
+        <button id="vote-yes" class="btn btn-yes">Yes</button>
+        <button id="vote-no" class="btn btn-no">No</button>
+      </div>
+      <div class="actions compact">
+        <button id="show-results" class="btn btn-secondary">Show results</button>
+      </div>
+      <p id="vote-message" class="success" role="status"></p>
+    </section>
+
+    <!-- Results View -->
+    <section id="results-view" class="card hidden" aria-live="polite">
+      <h2>Results</h2>
+      <div class="result-row">
+        <span>Yes</span>
+        <div class="bar"><div id="bar-yes" class="bar-fill yes" style="width:0%"></div></div>
+        <span id="pct-yes" class="pct">0%</span>
+      </div>
+      <div class="result-row">
+        <span>No</span>
+        <div class="bar"><div id="bar-no" class="bar-fill no" style="width:0%"></div></div>
+        <span id="pct-no" class="pct">0%</span>
+      </div>
+      <p id="totals" class="muted">0 votes</p>
+    </section>
+  </main>
+
+  
+
+  <script src="app.js"></script>
 </body>
 </html>
